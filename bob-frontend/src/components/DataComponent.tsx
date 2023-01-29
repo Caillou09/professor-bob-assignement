@@ -1,7 +1,9 @@
 import { Button, Modal, Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import format from 'date-fns/format';
 import React from 'react';
 import FormComponent from './FormComponent';
+
 
 
 export type DataType = {
@@ -11,7 +13,7 @@ export type DataType = {
     birthday: Date,
     role: string,
     createdAt: Date,
-    updatedAT: Date
+    updatedAt: Date
 }
 
 const columns: ColumnsType<DataType> = [
@@ -33,7 +35,9 @@ const columns: ColumnsType<DataType> = [
     {
         title: 'Birthday',
         dataIndex: 'birthday',
-        key: 'birthday'
+        key: 'birthday',
+        render: (text: string, record) => format(new Date(record.birthday), 'dd/MM/yy HH:mm'),
+        
     },
     {
         title: 'Role',
@@ -43,12 +47,14 @@ const columns: ColumnsType<DataType> = [
     {
         title: 'Created at',
         dataIndex: 'createdAt',
-        key: 'createdAt'
+        key: 'createdAt',
+        render: (text: string, record) => format(new Date(record.createdAt), 'dd/MM/yy HH:mm'),
     },
     {
         title: 'Updated at',
         dataIndex: 'updatedAt',
-        key: 'updatedAt'
+        key: 'updatedAt',
+        render: (text: string, record) => format(new Date(record.updatedAt), 'dd/MM/yy HH:mm'),
     },
 ];
 

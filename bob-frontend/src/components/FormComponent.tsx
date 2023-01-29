@@ -1,6 +1,8 @@
-import { Button, Form, Input, Select } from 'antd';
+import { Button, DatePicker, Form, Input, Select } from 'antd';
 import React from 'react';
 import { DataType } from './DataComponent';
+
+
 const { Option } = Select;
 
 type FormProps = {
@@ -57,7 +59,9 @@ const FormComponent: React.FC<FormProps> = ({onSubmit}) => {
                 <Option value="admin">Admin</Option>
                 </Select>
             </Form.Item>
-
+            <Form.Item name='birthday' label="Birthday" rules={[{ required: true }]}>
+                <DatePicker/>
+            </Form.Item>
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
                 Submit
